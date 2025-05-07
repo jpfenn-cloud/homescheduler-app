@@ -1,0 +1,26 @@
+* sudo service docker status
+* sudo service docker start
+
+* To see output run docker build. DO NOT use docker compose build.
+* sudo docker build --no-cache --progress=plain -t homescheduler-java .
+
+* sudo docker image ls
+* sudo docker container ls -a
+
+* sudo docker compose build
+* sudo docker compose up homescheduler-java
+* sudo docker compose down homescheduler-java
+
+* Azure docker login
+* https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli?tabs=azure-cli
+* az acr login --name homeschedulercontainerreg.azurecr.io
+  * If an error occurs, move to next command to see if it's a problem.
+* docker login homeschedulercontainerreg.azurecr.io
+* docker tag homescheduler-java homeschedulercontainerreg.azurecr.io/homescheduler-java
+* docker push homeschedulercontainerreg.azurecr.io/homescheduler-java
+
+* AWS docker login
+* https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html
+* aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 404112961297.dkr.ecr.us-west-2.amazonaws.com
+* sudo docker tag homescheduler-java 404112961297.dkr.ecr.us-west-2.amazonaws.com/homescheduler-creg
+* docker push 404112961297.dkr.ecr.us-west-2.amazonaws.com/homescheduler-creg
